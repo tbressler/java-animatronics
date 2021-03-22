@@ -1,0 +1,37 @@
+group 'de.tbressler.animatronics'
+version '1.0.0'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = '9'
+targetCompatibility = '9'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    // JUnit and tests:
+    testCompile 'junit:junit:4.13.1'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+
+}
+
+jar {
+
+    manifest {
+        attributes  'Implementation-Title': 'Animatronics Library',
+                    'Implementation-Version': archiveVersion,
+                    'Implementation-Vendor': 'Tobias Breßler'
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+}
