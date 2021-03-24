@@ -18,8 +18,7 @@ The library requires JDK 9 or higher.
 // Initialize and configure your animation (timeline).
 AnimatronicDouble animation = new AnimatronicDouble(1.0d)
         .keyframe(1.3d, 5000, Easings.easeInOutBack())
-        .keyframe(5.4d, 3000, Easings.easeInOutCubic())
-        .play();
+        .keyframe(5.4d, 3000, Easings.easeInOutCubic());
 
 // ...
 
@@ -28,7 +27,7 @@ animation.play();
 
 // ...
 
-// Use the current (interpolated) value when drawing.
+// Use the interpolated value at the current point in time.
 double currentValue = animation.getValue();
 
 ```
