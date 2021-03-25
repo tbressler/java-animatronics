@@ -106,7 +106,7 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
      * @param loop True if the animation should be looped.
      * @return The animatronic itself for simple chaining.
      */
-    final A play(long time, boolean loop) {
+    public final A play(long time, boolean loop) {
         startAt = time;
         loopTimeline = loop;
         return (A) this;
@@ -134,7 +134,7 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
      * @param time The system time.
      * @return The current value.
      */
-    final T getValue(long time) {
+    public final T getValue(long time) {
 
         if (!hasStarted(time))
             return valueAtStart;
@@ -214,7 +214,7 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
      * @param time The system time.
      * @return True if started.
      */
-    final boolean hasStarted(long time) {
+    public final boolean hasStarted(long time) {
         return (startAt > -1L) && (time >= startAt);
     }
 
@@ -238,7 +238,7 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
      * @param time The system time.
      * @return True if finished.
      */
-    final boolean hasFinished(long time) {
+    public final boolean hasFinished(long time) {
         if (loopTimeline)
             return false;
         return getTiming(time) >= lastKeyframeAt;
