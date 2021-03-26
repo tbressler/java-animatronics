@@ -40,7 +40,7 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
      */
     public Animatronic(T valueAtStart) {
         this.valueAtStart = requireNonNull(valueAtStart, "The valueAtStart must not be null");
-        timeline.put(lastKeyframeAt, new Keyframe(valueAtStart, 0L));
+        timeline.put(lastKeyframeAt, new Keyframe<>(valueAtStart, 0L));
     }
 
 
@@ -74,7 +74,7 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
 
         lastKeyframeAt = lastKeyframeAt + duration;
         lastValue = value;
-        timeline.put(lastKeyframeAt, new Keyframe(value, duration, (easing == null) ? Easings.noEasing() : easing));
+        timeline.put(lastKeyframeAt, new Keyframe<>(value, duration, (easing == null) ? Easings.noEasing() : easing));
 
         return (A) this;
     }
@@ -162,9 +162,8 @@ public abstract class Animatronic<T, A extends Animatronic<T, A>> {
         double timeInTimeslot = timing - lastEntry.getKey();
 
         Easing easing = nextEntry.getValue().getEasing();
-        double factor = easing.ease(timeInTimeslot / (double) nextEntry.getValue().getDuration());
-
-        return calculateValueInBetween(lastEntry.getValue().getValue(), nextEntry.getValue().getValue(), factor);
+        return calculateValueInBetween(lastEntry.getValue().getValue(), nextEntry.getValue().getValue(),
+                easing.ease(timeInTimeslot / (double) nextEntry.getValue().getDuration()));
     }
 
     /* Returns the current position in the timeline. */

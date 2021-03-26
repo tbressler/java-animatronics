@@ -1,18 +1,28 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easing;
-import de.tbressler.animatronics.ElasticValue;
+import de.tbressler.animatronics.Elastic;
 
 /**
- * A smooth value implementation for integers.
+ * An elastic value implementation for integers.
  *
  * @author Tobias Breßler
  * @version 1.0
  */
-public class ElasticInteger extends ElasticValue<Integer> {
+public class ElasticInteger extends Elastic<Integer> {
 
     /**
-     * A smooth value implementation for integers.
+     * An elastic value implementation for integers.
+     *
+     * @param valueAtStart The value at start.
+     * @param duration The duration of the smoothing.
+     */
+    public ElasticInteger(int valueAtStart, long duration) {
+        super(valueAtStart, duration);
+    }
+
+    /**
+     * An elastic value implementation for integers.
      *
      * @param valueAtStart The value at start.
      * @param duration The duration of the smoothing.

@@ -46,7 +46,7 @@ public class TestAnimatronic {
         animatronic = new Animatronic(null) {
             @Override
             protected Object calculateValueInBetween(Object lastValue, Object nextValue, double factor) {
-                return null;
+                return objectA;
             }
         };
     }

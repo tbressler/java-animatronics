@@ -1,17 +1,24 @@
 # Animatronics
 
 [![License](https://img.shields.io/badge/License-APL%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Travis CI](https://travis-ci.org/tbressler/java-animatronics.svg?branch=master)](https://travis-ci.org/tbressler/java-animatronics)
+[![Travis CI](https://travis-ci.com/tbressler/java-animatronics.svg?branch=main)](https://travis-ci.com/github/tbressler/java-animatronics)
 
 A very simple and low-level animation library for your Java project.
 
-The name *Animatronic* is a homage to mechatronic puppets which are often used in films and in theme park attractions.
+The library provides utilities for:
+
+* **keyframe animation** of values over time
+* **elastic values** (change values smoothly over time)
+
+*The name [Animatronics](https://en.wikipedia.org/wiki/Animatronics) is a homage to mechatronic puppets which are often used in films and in theme park attractions.*
 
 ## Usage
 
 The library requires JDK 9 or higher.
 
-### Animate a simple value
+### Keyframe animation of a value
+
+In order to animate a value over different steps you can simply use the ```Animatronic``` classes:
 
 ```Java
 
@@ -27,12 +34,58 @@ animation.play();
 
 // ...
 
-// Use the interpolated value at the current point in time.
+// Use the interpolated value at the current point in time
+// (for example when drawing the value on the screen).        
 double currentValue = animation.getValue();
 
 ```
 
-### Animate any object
+
+### Elastic values
+
+When you're dealing with realtime values and you want to change the displayed value smoothly to that new value, you can use the ```Elastic``` classes.
+
+An example:
+
+```Java
+
+// Initialize the value.
+ElasticDouble value = new ElasticValue(0d, 1000, Easings.easeInOutCubic());
+
+// When the realtime value changed, set the value.
+value.setValue(15d)
+
+// Use the interpolated value at the current point in time
+// (for example when drawing the value on the screen).
+double smoothedValue = value.getValue();
+
+```
+
+
+### Easing functions
+
+The library comes with different predefined easing functions.
+
+```Java
+
+Easing ease1 = Easings.easeInBack();
+Easing ease2 = Easings.easeInOutCubic();
+// ... and so on.
+
+// You can use the easing functions without
+// an animatronic or an elastic value:
+double easedValue = ease1.ease(0.1d);
+
+```
+
+You can add your own easing functions by implementing the interface ```Easing```.
+
+The predefined easing functions are inspired by [https://easings.net/](https://easings.net/).
+
+
+### Extend the base classes
+
+#### Custom animatronics
 
 Use the abstract class ```Animatronic<T>``` in order to animate any object you want. Simply create a class which extends ```Animatronic``` and implement the ```calculateValueInBetween()``` method. The method calculates the interpolated value with the given factor. You can use the helper method ```calculateValue()``` to calculate the interpolated value without any hustle.
 
@@ -64,18 +117,35 @@ The library has different default implementations:
 * Color with ```AnimatronicColor```
 * Point2D with ```AnimatronicPoint2D```
 
+#### Custom elastic values
 
-### Easing functions
+You can do the same with the abstract class ```Elastic<T>```:
 
-The library comes with different predefined easing functions.
+A good example is the ```ElasticDouble``` class:
 
 ```Java
 
-Easing e1 = Easings.easeInBack();
-Easing e2 = Easings.easeInOutCubic();
-// ... and so on.
+public class ElasticDouble extends Elastic<Double> {
+
+    // ...
+
+    @Override
+    protected Double calculateValueInBetween(Double lastValue, Double nextValue, double factor) {
+        return calculateValue(lastValue, nextValue, factor);
+    }
+
+}
 
 ```
+
+The library has different default implementations:
+
+* Double with ```ElasticDouble```
+* Float with ```ElasticFloat```
+* Integer with ```ElasticInteger```
+* Color with ```ElasticColor```
+* Point2D with ```ElasticPoint2D```
+
 
 ## License
 
