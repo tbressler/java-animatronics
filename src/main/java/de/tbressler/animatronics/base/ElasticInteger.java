@@ -1,7 +1,7 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easing;
-import de.tbressler.animatronics.SmoothValue;
+import de.tbressler.animatronics.ElasticValue;
 
 /**
  * A smooth value implementation for integers.
@@ -9,7 +9,7 @@ import de.tbressler.animatronics.SmoothValue;
  * @author Tobias Breßler
  * @version 1.0
  */
-public class SmoothInteger extends SmoothValue<Integer> {
+public class ElasticInteger extends ElasticValue<Integer> {
 
     /**
      * A smooth value implementation for integers.
@@ -18,7 +18,7 @@ public class SmoothInteger extends SmoothValue<Integer> {
      * @param duration The duration of the smoothing.
      * @param easing The easing function.
      */
-    public SmoothInteger(int valueAtStart, long duration, Easing easing) {
+    public ElasticInteger(int valueAtStart, long duration, Easing easing) {
         super(valueAtStart, duration, easing);
     }
 

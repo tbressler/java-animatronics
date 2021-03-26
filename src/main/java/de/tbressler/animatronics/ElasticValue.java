@@ -6,7 +6,7 @@ import static java.util.Objects.requireNonNull;
  * @author Tobias Breßler
  * @version 1.0
  */
-public abstract class SmoothValue<T> {
+public abstract class ElasticValue<T> {
 
     private final Easing easing;
     private final long duration;
@@ -18,7 +18,7 @@ public abstract class SmoothValue<T> {
     private long changedSince = -1L;
 
 
-    public SmoothValue(T valueAtStart, long duration, Easing easing) {
+    public ElasticValue(T valueAtStart, long duration, Easing easing) {
         this.easing = easing;
         this.duration = duration;
         this.lastValue = valueAtStart;

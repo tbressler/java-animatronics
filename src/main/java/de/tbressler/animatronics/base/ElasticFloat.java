@@ -1,7 +1,7 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easing;
-import de.tbressler.animatronics.SmoothValue;
+import de.tbressler.animatronics.ElasticValue;
 
 /**
  * A smooth value implementation for floats.
@@ -9,7 +9,7 @@ import de.tbressler.animatronics.SmoothValue;
  * @author Tobias Breßler
  * @version 1.0
  */
-public class SmoothFloat extends SmoothValue<Float> {
+public class ElasticFloat extends ElasticValue<Float> {
 
     /**
      * A smooth value implementation for floats.
@@ -18,7 +18,7 @@ public class SmoothFloat extends SmoothValue<Float> {
      * @param duration The duration of the smoothing.
      * @param easing The easing function.
      */
-    public SmoothFloat(float valueAtStart, long duration, Easing easing) {
+    public ElasticFloat(float valueAtStart, long duration, Easing easing) {
         super(valueAtStart, duration, easing);
     }
 

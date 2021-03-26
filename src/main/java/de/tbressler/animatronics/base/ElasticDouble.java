@@ -1,7 +1,7 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easing;
-import de.tbressler.animatronics.SmoothValue;
+import de.tbressler.animatronics.ElasticValue;
 
 /**
  * A smooth value implementation for doubles.
@@ -9,7 +9,7 @@ import de.tbressler.animatronics.SmoothValue;
  * @author Tobias Breßler
  * @version 1.0
  */
-public class SmoothDouble extends SmoothValue<Double> {
+public class ElasticDouble extends ElasticValue<Double> {
 
     /**
      * A smooth value implementation for doubles.
@@ -18,7 +18,7 @@ public class SmoothDouble extends SmoothValue<Double> {
      * @param duration The duration of the smoothing.
      * @param easing The easing function.
      */
-    public SmoothDouble(double valueAtStart, long duration, Easing easing) {
+    public ElasticDouble(double valueAtStart, long duration, Easing easing) {
         super(valueAtStart, duration, easing);
     }
 
