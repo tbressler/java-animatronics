@@ -1,11 +1,12 @@
 package de.tbressler.animatronics.base;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * Test for class AnimatronicColor.
@@ -19,7 +20,7 @@ public class TestAnimatronicColor {
     private AnimatronicColor animatronic;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         animatronic = new AnimatronicColor(new Color(100, 100, 100, 100));
     }

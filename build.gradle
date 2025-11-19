@@ -1,11 +1,12 @@
-group 'de.tbressler.animatronics'
-version '1.1.0'
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
 
-apply plugin: 'java'
-apply plugin: 'maven'
-
-sourceCompatibility = '9'
-targetCompatibility = '9'
+allprojects {
+    group 'de.tbressler.animatronics'
+    version '1.1.1'
+}
 
 repositories {
     mavenLocal()
@@ -15,8 +16,9 @@ repositories {
 dependencies {
 
     // JUnit and tests:
-    testCompile 'junit:junit:4.13.1'
-    testCompile 'org.mockito:mockito-all:1.10.19'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
+    testImplementation 'org.mockito:mockito-core:5.14.2'
 
 }
 
@@ -28,10 +30,19 @@ jar {
                     'Implementation-Vendor': 'Tobias Breßler'
     }
 
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'de.tbressler.animatronics'
+            artifactId = 'java-animatronics'
+            version = '1.1.1'
         }
     }
+}
 
+test {
+    useJUnitPlatform()
 }

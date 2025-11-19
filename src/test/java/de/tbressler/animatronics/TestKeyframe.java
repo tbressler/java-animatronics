@@ -1,10 +1,12 @@
 package de.tbressler.animatronics;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Tests for class Keyframe.
@@ -25,7 +27,7 @@ public class TestKeyframe {
     private Object objectD = "object-D";
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         keyframe = new Keyframe(objectA, 2310L, easing);
     }
@@ -33,19 +35,19 @@ public class TestKeyframe {
 
     // Constructor:
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void constructor_withNullValue_throwsNPE() {
-        new Keyframe<>(null, 2000L, easing);
+        assertThrows(NullPointerException.class, () -> new Keyframe<>(null, 2000L, easing));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void constructor_withNegativeDuration_throwsIllegalArgumentException() {
-        new Keyframe<>(objectA, -1L, easing);
+        assertThrows(IllegalArgumentException.class, () -> new Keyframe<>(objectA, -1L, easing));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void constructor_withNullEasing_throwsNPE() {
-        new Keyframe<>(objectA, 1000L, null);
+        assertThrows(NullPointerException.class, () -> new Keyframe<>(objectA, 1000L, null));
     }
 
 

@@ -1,12 +1,12 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easings;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.awt.geom.Point2D;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test for class AnimatronicPoint2D.
@@ -20,7 +20,7 @@ public class TestElasticPoint2D {
     private ElasticPoint2D elastic;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         elastic = new ElasticPoint2D(new Point2D.Double(2D, 3D), 1000, Easings.noEasing());
     }

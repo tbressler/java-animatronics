@@ -1,12 +1,12 @@
 package de.tbressler.animatronics;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.anyDouble;
-import static org.mockito.Matchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 /**
@@ -29,7 +29,7 @@ public class TestElastic {
     private Object objectD = "object-D";
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         elastic = new Elastic(objectA, 1000, easing) {
             @Override
@@ -42,24 +42,24 @@ public class TestElastic {
 
     // Constructor:
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void constructor_withNullValue_throwsNPE() {
-        elastic = new Elastic(null, 1000, easing) {
+        assertThrows(NullPointerException.class, () -> new Elastic(null, 1000, easing) {
             @Override
             protected Object calculateValueInBetween(Object lastValue, Object nextValue, double factor) {
                 return objectA;
             }
-        };
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void constructor_withNegativeDuration_throwsIllegalArgumentException() {
-        elastic = new Elastic(null, -1, easing) {
+        assertThrows(IllegalArgumentException.class, () ->  new Elastic(null, -1, easing) {
             @Override
             protected Object calculateValueInBetween(Object lastValue, Object nextValue, double factor) {
                 return objectA;
             }
-        };
+        });
     }
 
     @Test

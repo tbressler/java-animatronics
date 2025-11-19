@@ -1,10 +1,10 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easings;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test for class ElasticInteger.
@@ -18,7 +18,7 @@ public class TestElasticInteger {
     private ElasticInteger elastic;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         elastic = new ElasticInteger(100, 1000, Easings.noEasing());
     }

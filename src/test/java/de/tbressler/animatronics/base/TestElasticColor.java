@@ -1,12 +1,12 @@
 package de.tbressler.animatronics.base;
 
 import de.tbressler.animatronics.Easings;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test for class AnimatronicColor.
@@ -20,7 +20,7 @@ public class TestElasticColor {
     private ElasticColor elastic;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         elastic = new ElasticColor(new Color(100, 100, 100, 100), 1000, Easings.noEasing());
     }

@@ -1,9 +1,9 @@
 package de.tbressler.animatronics.base;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test for class AnimatronicDouble.
@@ -17,7 +17,7 @@ public class TestAnimatronicDouble {
     private AnimatronicDouble animatronic;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         animatronic = new AnimatronicDouble(1.0D);
     }

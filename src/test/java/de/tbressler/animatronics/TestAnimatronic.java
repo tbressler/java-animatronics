@@ -1,11 +1,10 @@
 package de.tbressler.animatronics;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -28,7 +27,7 @@ public class TestAnimatronic {
     private Object objectD = "object-D";
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         animatronic = new Animatronic(objectA) {
             @Override
@@ -41,48 +40,48 @@ public class TestAnimatronic {
 
     // Constructor:
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void constructor_withNullValue_throwsNPE() {
-        animatronic = new Animatronic(null) {
+        assertThrows(NullPointerException.class, () -> new Animatronic(null) {
             @Override
             protected Object calculateValueInBetween(Object lastValue, Object nextValue, double factor) {
                 return objectA;
             }
-        };
+        });
     }
 
 
     // Add keyframes:
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void keyframe1_withNulLValue_throwsNPE() {
-        animatronic.keyframe(null, 1000L);
+        assertThrows(NullPointerException.class, () -> animatronic.keyframe(null, 1000L));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void keyframe1_withZeroDuration_throwsIllegalArgumentException() {
-        animatronic.keyframe(objectB, 0L);
+        assertThrows(IllegalArgumentException.class, () -> animatronic.keyframe(objectB, 0L));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void keyframe1_withNegativeDuration_throwsIllegalArgumentException() {
-        animatronic.keyframe(objectB, -1L);
+        assertThrows(IllegalArgumentException.class, () -> animatronic.keyframe(objectB, -1L));
     }
 
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void keyframe2_withNulLValue_throwsNPE() {
-        animatronic.keyframe(null, 1000L, easing);
+        assertThrows(NullPointerException.class, () -> animatronic.keyframe(null, 1000L, easing));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void keyframe2_withZeroDuration_throwsIllegalArgumentException() {
-        animatronic.keyframe(objectB, 0L, easing);
+        assertThrows(IllegalArgumentException.class, () -> animatronic.keyframe(objectB, 0L, easing));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void keyframe2_withNegativeDuration_throwsIllegalArgumentException() {
-        animatronic.keyframe(objectB, -1L, easing);
+        assertThrows(IllegalArgumentException.class, () -> animatronic.keyframe(objectB, -1L, easing));
     }
 
     @Test
