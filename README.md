@@ -1,7 +1,6 @@
 # Animatronics
 
 [![License](https://img.shields.io/badge/License-APL%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Travis CI](https://travis-ci.com/tbressler/java-animatronics.svg?branch=main)](https://travis-ci.com/github/tbressler/java-animatronics)
 
 A very simple and low-level animation library for your Java project.
 

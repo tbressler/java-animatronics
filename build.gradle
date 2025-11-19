@@ -23,13 +23,11 @@ dependencies {
 }
 
 jar {
-
     manifest {
         attributes  'Implementation-Title': libTitle,
                     'Implementation-Version': libVersion,
                     'Implementation-Vendor': libAuthor
     }
-
 }
 
 publishing {
