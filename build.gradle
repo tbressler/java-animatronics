@@ -4,8 +4,8 @@ plugins {
 }
 
 allprojects {
-    group 'de.tbressler.animatronics'
-    version '1.1.1'
+    group libGroupId
+    version libVersion
 }
 
 repositories {
@@ -16,18 +16,18 @@ repositories {
 dependencies {
 
     // JUnit and tests:
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
-    testImplementation 'org.mockito:mockito-core:5.14.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:6.0.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.1'
+    testImplementation 'org.mockito:mockito-core:5.20.0'
 
 }
 
 jar {
 
     manifest {
-        attributes  'Implementation-Title': 'Animatronics Library',
-                    'Implementation-Version': archiveVersion,
-                    'Implementation-Vendor': 'Tobias Breßler'
+        attributes  'Implementation-Title': libTitle,
+                    'Implementation-Version': libVersion,
+                    'Implementation-Vendor': libAuthor
     }
 
 }
@@ -36,9 +36,9 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            groupId = 'de.tbressler.animatronics'
-            artifactId = 'java-animatronics'
-            version = '1.1.1'
+            groupId = libGroupId
+            artifactId = libArtifactId
+            version = libVersion
         }
     }
 }
